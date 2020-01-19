@@ -1,0 +1,3 @@
+@component('components.privateWrapper')
+
+@endcomponent
