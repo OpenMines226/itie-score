@@ -14,7 +14,7 @@
                 <a href="{{ url('/') }}" class="nav-link">{{ __('Home') }}</a>
             </li>
         </ul>
-        
+
         @include('partials._userWidget')
     </nav>
     <!-- /.navbar -->
@@ -53,12 +53,21 @@
                     </p>
                 </a>
             </li>
-            
+
             <li class="nav-item">
                 <a href="{{ route('users.index') }}" class="nav-link">
                     <i class="nav-icon fas fa-users"></i>
                     <p>
                         {{ __('Users') }}
+                    </p>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a href="{{ route('regions.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-compass"></i>
+                    <p>
+                        {{ __('Regions') }}
                     </p>
                 </a>
             </li>

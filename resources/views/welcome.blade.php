@@ -16,25 +16,20 @@
             crossorigin=""></script>
 
         <script>
-          var planes = [
-        		["7C6B07",12.3601599,-1.8990517],
-        		["7C6B38",12.3672025,-1.662159],
-        		["7C6CA1",12.3672025,-1.662159],
-        		["7C6CA2",12.3601599,-1.8990517],
-        		["C81D9D",12.3111921,-1.6140938],
-        		["C82009",12.3051543,-1.4544488],
-      		];
-          var mymap = L.map('mapid').setView([12.3601599,-1.8990517], 9.25);
+          var planes = @json($regions->toArray());
+
+          var mymap = L.map('mapid').setView([12.3601599,-1.8990517], 7.25);
           L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
           		  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           		}).addTo(mymap)
 
         	for (var i = 0; i < planes.length; i++) {
-        			marker = new L.marker([planes[i][1],planes[i][2]])
-        				.bindPopup(planes[i][0])
+        			marker = new L.marker([planes[i].long,planes[i].lat])
+        				.bindPopup("<b>"+planes[i].name+"</b><br>This is the default description for a "+planes[i].name+" region.")
         				.addTo(mymap);
       		}
         </script>
+
     @endpush
 
 @endcomponent
