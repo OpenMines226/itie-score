@@ -16,7 +16,7 @@ class CreateJobsTable extends Migration
         Schema::create('jobs', function (Blueprint $table) {
             $table->bigIncrements('id');
             $table->enum('type', ['Technical', 'Mangament']);
-            $table->enum('gender', ['Male', 'Female'])
+            $table->enum('gender', ['Male', 'Female']);
             $table->timestamps();
         });
     }
