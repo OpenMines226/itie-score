@@ -25,9 +25,9 @@
                 <td>{{ $region->lat }}</td>
                 <td>{{ $region->created_at->diffForHumans() }}</td>
                 <td>
-                    <button type="button" class="btn btn-outline-primary btn-sm">
+                    <a href="{{ route('regions.show', $region) }}" type="button" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-eye"></i>
-                    </button>
+                    </a>
                     <button type="button" class="btn btn-outline-danger btn-sm">
                         <i class="fas fa-trash"></i>
                     </button>

@@ -22,3 +22,5 @@ Route::post('/language', 'LanguageController')->name('language');
 Route::resource('users', 'UserController');
 
 Route::resource('regions', 'RegionController');
+
+Route::resource('companies', 'MiningCompanyController');

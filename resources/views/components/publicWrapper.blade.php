@@ -11,7 +11,7 @@
                     style="opacity: .8">
             <span class="brand-text font-weight-light">ITIE-Score</span>
             </a>
-            
+
             <button class="navbar-toggler order-1" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
             </button>
@@ -19,7 +19,7 @@
             <div class="collapse navbar-collapse order-3" id="navbarCollapse">
                 <!-- Left navbar links -->
                 <ul class="navbar-nav">
-                    
+
                 </ul>
             </div>
 
@@ -27,7 +27,7 @@
         </div>
     </nav>
     <!-- /.navbar -->
-    
+
     @include('flash::message')
 
     {{ $header }}
@@ -38,7 +38,7 @@
 
         <!-- Main content -->
         <div class="content">
-            <div class="container">
+            <div class="container-fluid">
             {{ $slot }}
             </div><!-- /.container-fluid -->
         </div>

@@ -5,24 +5,26 @@
       <table class="table table-striped">
         <thead>
           <tr>
-            <th style="width: 10px">#</th>
+            <th style="width: 5%">#</th>
             <th style="width: 300px">{{ __('Name') }}</th>
-            <th>{{ __('Email') }}</th>
-            <th style="width: 150px">{{ __('Joined') }}</th>
-            <th style="width: 120px"></th>
+            <th>{{ __('Description') }}</th>
+            <th style="width: 150px">{{ __('IFU') }}</th>
+            <th style="width: 10%">{{ __('Region') }}</th>
+            <th style="width: 10%"></th>
           </tr>
         </thead>
         <tbody>
-            @foreach ($users as $user)
+            @foreach ($companies as $company)
             <tr>
                 <td>{{ $loop->iteration }}</td>
                 <td>
                     <img src="{{ asset('img/avatar.jpg') }}" alt="Product 1" class="img-circle img-size-32 mr-2">
-                    {{ $user->name }}</td>
+                    {{ $company->name }}</td>
                 <td>
-                    {{ $user->email }}
+                    {{ $company->decription }}
                 </td>
-                <td>{{ $user->created_at->diffForHumans() }}</td>
+                <td>{{ $company->ifu_number }}</td>
+                <td>{{ $company->region->name }}</td>
                 <td>
                     <button type="button" class="btn btn-outline-primary btn-sm">
                         <i class="fas fa-eye"></i>
@@ -39,7 +41,7 @@
     <!-- /.card-body -->
 
     <div class="card-footer clearfix">
-        {{ $users->links('partials._privatePagination') }}
+        {{ $companies->links('partials._privatePagination') }}
     </div>
 </div>
 @endcomponent

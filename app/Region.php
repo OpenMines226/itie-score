@@ -12,4 +12,9 @@ class Region extends Model
      * @var array
      */
     protected $fillable = ['name', 'long', 'lat'];
+
+    public function mining_companies()
+    {
+        return $this->hasMany('App\MiningCompany');
+    }
 }

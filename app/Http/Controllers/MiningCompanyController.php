@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Region;
+use App\MiningCompany;
 use Illuminate\Http\Request;
 
-class RegionController extends Controller
+class MiningCompanyController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,9 +14,9 @@ class RegionController extends Controller
      */
     public function index()
     {
-        return view('pages.region.index')->with([
-            'regions' => Region::paginate()
-        ]);
+      return view('pages.company.index')->with([
+          'companies' => MiningCompany::with('region')->paginate()
+      ]);
     }
 
     /**
@@ -43,23 +43,21 @@ class RegionController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Region  $region
+     * @param  \App\MiningCompany  $miningCompany
      * @return \Illuminate\Http\Response
      */
-    public function show(Region $region)
+    public function show(MiningCompany $miningCompany)
     {
-        return view('pages.region.show')->with([
-            'region' => $region
-        ]);
+        //
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Region  $region
+     * @param  \App\MiningCompany  $miningCompany
      * @return \Illuminate\Http\Response
      */
-    public function edit(Region $region)
+    public function edit(MiningCompany $miningCompany)
     {
         //
     }
@@ -68,10 +66,10 @@ class RegionController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Region  $region
+     * @param  \App\MiningCompany  $miningCompany
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Region $region)
+    public function update(Request $request, MiningCompany $miningCompany)
     {
         //
     }
@@ -79,10 +77,10 @@ class RegionController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Region  $region
+     * @param  \App\MiningCompany  $miningCompany
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Region $region)
+    public function destroy(MiningCompany $miningCompany)
     {
         //
     }

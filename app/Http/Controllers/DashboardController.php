@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Region;
+use App\MiningCompany;
 
 class DashboardController extends Controller
 {
@@ -23,6 +25,9 @@ class DashboardController extends Controller
      */
     public function index()
     {
-        return view('dashboard');
+        return view('dashboard')->with([
+          'regions' => Region::withCount('mining_companies')->get(),
+          'companies' => MiningCompany::paginate()
+        ]);
     }
 }

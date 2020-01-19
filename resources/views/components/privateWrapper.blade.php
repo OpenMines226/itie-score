@@ -71,6 +71,15 @@
                     </p>
                 </a>
             </li>
+
+            <li class="nav-item">
+                <a href="{{ route('companies.index') }}" class="nav-link">
+                    <i class="nav-icon fas fa-building"></i>
+                    <p>
+                        {{ __('Mining Companies') }}
+                    </p>
+                </a>
+            </li>
             </ul>
         </nav>
         <!-- /.sidebar-menu -->
