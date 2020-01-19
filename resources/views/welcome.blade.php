@@ -7,6 +7,9 @@
     <div class="row">
       <div class="col-md-7">
         <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{{ __('Regions') }}</h3>
+          </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
               <table class="table table-striped">
@@ -46,6 +49,9 @@
 
       <div class="col-md-5">
         <div class="card">
+          <div class="card-header">
+            <h3 class="card-title">{{ __('Mining Companies') }}</h3>
+          </div>
             <!-- /.card-header -->
             <div class="card-body p-0">
               <table class="table table-striped">
