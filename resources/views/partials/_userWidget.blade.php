@@ -2,15 +2,30 @@
 <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto">
     <li class="nav-item dropdown">
       <a class="nav-link" data-toggle="dropdown" href="#">
-        <i class="flag-icon flag-icon-gb"></i> {{ __('Language') }}
+        <i class="flag-icon flag-icon-{{ app()->getLocale() === 'en' ? 'gb' : 'fr' }}"></i> {{ __('Language') }}
       </a>
       <div class="dropdown-menu dropdown-menu-right p-0">
-        <a href="#" class="dropdown-item active">
-          <i class="flag-icon flag-icon-gb mr-2"></i> {{ __('English') }}
-        </a>
-        <a href="#" class="dropdown-item">
-          <i class="flag-icon flag-icon-fr mr-2"></i> {{ __('French') }}
-        </a>
+      <a class="dropdown-item{{ app()->getLocale() === 'en' ? ' active' : '' }}" href="{{ route('language') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('language-en-form').submit();">
+            <i class="flag-icon flag-icon-gb mr-2"></i> {{ __('English') }}
+          </a>
+
+          <form id="language-en-form" action="{{ route('language') }}" method="POST" style="display: none;">
+              @csrf
+              <input type="text" value="en" name="language" />
+          </form>
+
+          <a class="dropdown-item{{ app()->getLocale() === 'fr' ? ' active' : '' }}" href="{{ route('language') }}"
+          onclick="event.preventDefault();
+                        document.getElementById('language-fr-form').submit();">
+            <i class="flag-icon flag-icon-fr mr-2"></i> {{ __('French') }}
+          </a>
+
+          <form id="language-fr-form" action="{{ route('language') }}" method="POST" style="display: none;">
+              @csrf
+              <input type="text" value="fr" name="language" />
+          </form>
       </div>
     </li>
 

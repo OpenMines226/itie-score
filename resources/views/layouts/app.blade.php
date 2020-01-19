@@ -22,6 +22,11 @@
 
         <!-- Styles -->
         <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+        <style>
+            .alert {
+            margin-bottom: 0;
+            }
+        </style>
         @stack('styles')
     </head>
     <body class="@yield('bodyClasses')">
@@ -34,5 +39,8 @@
         <script src="{{ asset('js/app.js') }}"></script>
         <!-- AdminLTE App -->
         <script src="{{ asset('js/adminlte.min.js') }}"></script>
+        <script>
+            $('div.alert').not('.alert-important').delay(3000).fadeOut(350);
+        </script>
     </body>
 </html>

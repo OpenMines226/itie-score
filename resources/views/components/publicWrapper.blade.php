@@ -27,6 +27,8 @@
         </div>
     </nav>
     <!-- /.navbar -->
+    
+    @include('flash::message')
 
     {{ $header }}
 
