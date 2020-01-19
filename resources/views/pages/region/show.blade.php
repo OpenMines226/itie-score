@@ -60,12 +60,12 @@
     <script>
       var region = @json($region->toArray());
 
-      var regionmap = L.map('regionmap').setView([region.long,region.lats], 7.25);
+      var regionmap = L.map('regionmap').setView([region.long,region.lat], 7.25);
       L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
             attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
           }).addTo(regionmap)
 
-          marker = new L.marker([region.long,region.lat])
+          var marker = new L.marker([region.long,region.lat])
             .bindPopup("<b>"+region.name+"</b><br>This is the default description for a "+region.name+" region.")
             .addTo(regionmap);
     </script>
