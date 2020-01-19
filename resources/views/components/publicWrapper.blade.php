@@ -34,7 +34,7 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-        @include('partials._header')
+        @include('partials._header', ['page_title' => $page_title])
 
         <!-- Main content -->
         <div class="content">

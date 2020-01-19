@@ -1,44 +1,40 @@
-@component('components.publicWrapper')
+@component('components.publicWrapper', ['page_title' => 'Welcome'])
     @slot('header')
-        <header>
-            <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
-            <ol class="carousel-indicators">
-                <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
-                <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
-            </ol>
-            <div class="carousel-inner" role="listbox">
-                <!-- Slide One - Set the background image for this slide in the line below -->
-                <div class="carousel-item active" style="background-image: url('{{ asset('img/slides/slide-1.jpg')}}')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">First Slide</h2>
-                    <p class="lead">This is a description for the first slide.</p>
-                </div>
-                </div>
-                <!-- Slide Two - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset('img/slides/slide-2.jpg')}}')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Second Slide</h2>
-                    <p class="lead">This is a description for the second slide.</p>
-                </div>
-                </div>
-                <!-- Slide Three - Set the background image for this slide in the line below -->
-                <div class="carousel-item" style="background-image: url('{{ asset('img/slides/slide-3.jpg')}}')">
-                <div class="carousel-caption d-none d-md-block">
-                    <h2 class="display-4">Third Slide</h2>
-                    <p class="lead">This is a description for the third slide.</p>
-                </div>
-                </div>
-            </div>
-            <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
-                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Previous</span>
-                </a>
-            <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
-                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                    <span class="sr-only">Next</span>
-                </a>
-            </div>
-        </header>
+        <div id="mapid" style="height: 600px"></div>
     @endslot
+
+    @push('styles')
+        <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css"
+            integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ=="
+            crossorigin=""/>
+    @endpush
+
+    @push('scripts')
+         <!-- Make sure you put this AFTER Leaflet's CSS -->
+        <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js"
+            integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew=="
+            crossorigin=""></script>
+
+        <script>
+          var planes = [
+        		["7C6B07",12.3601599,-1.8990517],
+        		["7C6B38",12.3672025,-1.662159],
+        		["7C6CA1",12.3672025,-1.662159],
+        		["7C6CA2",12.3601599,-1.8990517],
+        		["C81D9D",12.3111921,-1.6140938],
+        		["C82009",12.3051543,-1.4544488],
+      		];
+          var mymap = L.map('mapid').setView([12.3601599,-1.8990517], 9.25);
+          L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+          		  attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
+          		}).addTo(mymap)
+
+        	for (var i = 0; i < planes.length; i++) {
+        			marker = new L.marker([planes[i][1],planes[i][2]])
+        				.bindPopup(planes[i][0])
+        				.addTo(mymap);
+      		}
+        </script>
+    @endpush
+
 @endcomponent

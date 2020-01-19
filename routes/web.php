@@ -18,3 +18,5 @@ Auth::routes();
 Route::get('/home', 'DashboardController@index')->name('home');
 
 Route::post('/language', 'LanguageController')->name('language');
+
+Route::resource('users', 'UserController');
